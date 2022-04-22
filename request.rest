@@ -17,5 +17,6 @@ PUT http://localhost:3003/turma/change
 content-type: application/json
 
 {
-"id": "1650660608251", "modulo": "3"
+"id": "1650660608251", "modulo": "2"
+
 }
