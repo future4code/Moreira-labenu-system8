@@ -1,0 +1,21 @@
+
+GET http://localhost:3003/turma/active
+content-type: application/json
+
+###
+
+POST http://localhost:3003/turma/add 
+content-type: application/json
+
+{
+"nome": "NEWTON", "modulo": "0"
+}
+
+###
+
+PUT http://localhost:3003/turma/change
+content-type: application/json
+
+{
+"id": "1650660608251", "modulo": "3"
+}
