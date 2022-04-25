@@ -1,4 +1,36 @@
 
+
+###
+POST http://localhost:3003/docente 
+content-type: application/json
+
+   {
+    "id":5,
+    "nome":"Damiao",
+    "email":"dami3@gmail.com",
+    "data_nasc":"1965-01-10",
+"turma_id": 1
+    }
+
+
+### 
+GET http://localhost:3003/docente 
+content-type: application/json
+
+{
+"nome":"damiao"
+}
+
+
+###
+PUT http://localhost:3003/docente/edit 
+content-type: application/json
+
+{
+"nome": "Fernada",
+"turma_id": "1650913250972"
+}
+
 GET http://localhost:3003/turma/active
 content-type: application/json
 
@@ -50,6 +82,7 @@ content-type: application/json
     "turma_id":"1650662710698",
     "id":"1650849241093"
 }
+
 
 
 
