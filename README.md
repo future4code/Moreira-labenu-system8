@@ -36,5 +36,7 @@ As funcionalidades básicas são:
 Participantes
 
 Arthur Kelvin
+
 Larissa Firmino
+
 Matheus Castro
