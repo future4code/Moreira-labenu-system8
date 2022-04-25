@@ -8,7 +8,7 @@ POST http://localhost:3003/turma/add
 content-type: application/json
 
 {
-"nome": "NEWTON", "modulo": "0"
+"nome": "moreira", "modulo": "0"
 }
 
 ###
@@ -20,3 +20,38 @@ content-type: application/json
 "id": "1650660608251", "modulo": "2"
 
 }
+
+###
+
+POST http://localhost:3003/estudante
+content-type: application/json
+
+{
+    "nome":"matheus",
+    "email":"matheus@gmail.com",
+    "data_nasc": "1998/05/01",
+    "turma_id": "1650662512239"
+}
+
+###
+GET http://localhost:3003/estudante
+content-type: application/json
+
+{
+    "nome":"joao"
+}
+
+###
+
+PUT http://localhost:3003/estudante/edit
+content-type: application/json
+
+{
+    "turma_id":"1650662710698",
+    "id":"1650849241093"
+}
+
+
+
+
+
