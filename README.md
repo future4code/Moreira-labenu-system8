@@ -33,7 +33,7 @@ As funcionalidades básicas são:
 → Pegar a idade de algum estudante a partir do id
 
 
-Participantes
+Participantes:
 
 Arthur Kelvin
 
