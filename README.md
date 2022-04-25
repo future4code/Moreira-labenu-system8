@@ -31,3 +31,10 @@ As funcionalidades básicas são:
 → Adicionar docente na turma;
 
 → Pegar a idade de algum estudante a partir do id
+
+
+Participantes
+
+Arthur Kelvin
+Larissa Firmino
+Matheus Castro
