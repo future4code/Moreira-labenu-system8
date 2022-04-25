@@ -1,0 +1,29 @@
+
+
+###
+POST http://localhost:3003/docente content-type: application/json
+
+   {
+    "id":4,
+    "nome":"Damiao",
+    "email":"dami2@gmail.com",
+    "data_nasc":"1965-01-10",
+"turma_id": 1
+    }
+
+
+### 
+GET http://localhost:3003/docente content-type: application/json
+
+{
+"nome":"damiao"
+}
+
+
+###
+PUT http://localhost:3003/docente/edit content-type: application/json
+
+{
+"nome": "Fernada",
+"turma_id": "1650913250972"
+}

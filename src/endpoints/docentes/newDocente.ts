@@ -1,49 +1,61 @@
 import { Request, Response } from "express";
 import { connection } from "../../data/connection";
-import { app } from "../../app";
+import Docente from "./docente"
 
 
+ //Criar docente
 
-type criarDocente={
-    id:number,
-    nome:string,
-    email:string,
-    data_nasc: string,
-    turma_id:number,
- }
-export const newDoscente = async (req: Request, res: Response) =>{
-    let errorCode = 400;
-    try{
-        
-        const input: criarDocente = {
-            id: req.body.id,
-            nome: req.body.nome,
-            email: req.body.email,
-            data_nasc :req.body.data_nasc,
-            turma_id: req.body.turma_id
-
-        }
-
-        if(!input.id || !input.nome || !input.email || !input.data_nasc){
-            errorCode = 422;
-            throw new Error( "Preencha os campos corretamente")
-        }
-  
-        await connection.raw(`
-            INSERT INTO DOCENTE (id,nome, email, data_nasc, turma_id)
-            VALUE(
-                '${input.id}',
-                '${input.nome}',
-                '${input.email}',
-                '${input.data_nasc}',
-                '${input.turma_id}'
-            )
-
-            `)
-            res.status(201).send({message:"Docente criado com sucesso"})
-
-    } catch (error:any){
-      res.status(errorCode).send({message: error.message});
-    }
-
+ export async function newDocente(
+    req: Request,
+    res: Response
+ ): Promise<void> {
+    let errorCode=400
+    try { 
+        const newDocente: Docente = new Docente(Date.now().toString(), req.body.nome, req.body.email, req.body.data_nasc, req.body.turma_id)
+        connection("DOCENTE")
+       .insert(newDocente)
+       .then(() => { res.status(200).send("Sucess!") })
+    } catch (error:any) {
+        res.status(errorCode).send(error.message)
+    } 
 }
+
+//Buscar todos docentes
+
+export async function searchDocente(
+    req:Request,
+    res:Response
+):Promise<void> {
+    let errorCode = 400
+    try {
+        const result: Docente[] = await connection("DOCENTE")
+        .where("nome", "=", req.body.nome)
+
+        res.status(200).send(result)
+       
+    } catch (error: any) {
+        res.status(errorCode).send(error.message)
+    }   
+}
+
+
+
+//Mudar docente de turma
+
+export async function ChangeDocente(
+    req: Request,
+    res: Response
+ ): Promise<void> {
+    let errorCode=400
+    try {
+
+       await connection("DOCENTE")
+       .update({turma_id: req.body.turma_id})
+       .where('nome',"=", req.body.nome)
+ 
+       res.status(200).send("sucess!!")
+ 
+     } catch (error:any) {
+        res.status(errorCode).send(error.message)
+     }
+ }
